@@ -128,3 +128,53 @@ let inquirer = require('inquirer');
         for (var i = 0; i < installArr.length; i++) {
             completeREADME.push(`${i + 1}. ${installArr[i]}`);
         }
+        //Adding Usage
+    if (input.usage == '') {
+        readmeUsage = `\n${usageHead}\n Enter project usage here.`;
+    } else {
+        readmeUsage = `\n${usageHead}\n${input.usage}`;
+    }
+    completeREADME.push(readmeUsage);
+    
+    
+    //Adding Contributing
+    if (input.contribution == '') {
+        readmeContribution = `\n${contributionHead}\n Enter project contriburtion information here.`;
+    } else {
+        readmeContribution = `\n${contributionHead}\n${input.contribution}`;
+    }
+    completeREADME.push(readmeContribution);
+    
+    
+    //Adding Tests
+    if (input.testing == '') {
+        readmeTest = `\n${testingHead}\n Enter project testing information here.`;
+    } else {
+        readmeTest = `\n${testingHead}\n${input.testing}`;
+    }
+    completeREADME.push(readmeTest);
+    
+    
+    //License info
+    readmeLicence = `\n${licenseHead}\nThis project is convered under the ${input.license}.`;
+    completeREADME.push(readmeLicence);
+    
+    
+    //Questions section with github link
+    readmeQuestions = `\n${questionsHead}\nFor questions about this project, please see my GitHub at [${input.github}](https://github.com/${input.github}), or reach out by email at ${input.email}.`;
+    completeREADME.push(readmeQuestions);
+    
+    
+    //Joining the created README Array with a newline separator
+    const README = completeREADME.join('\n');
+        
+    
+    //Creating the README
+    fs.writeFile("./example/README-example.md", README, (err) => {
+        if (err) {
+            throw err;
+        } else {
+            console.log("README file successfully created!");
+        }
+    });
+}
