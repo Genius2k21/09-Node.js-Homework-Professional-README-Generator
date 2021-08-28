@@ -60,4 +60,71 @@ let inquirer = require('inquirer');
                 ]
             }
         ])
-    
+        .then((res) => {
+            console.log("Creating README file...");
+            createREADMEFile(res);
+            
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        
+        
+    function createREADMEFile(input) {
+        let readmeTitle;
+        let readmeDescription;
+        const descriptionHead = "## Description";
+        let tableOfContents;
+        const tocHead = "## Table of Contents";
+        let installArr;
+        const installHead = "## Installation";
+        let readmeUsage;
+        const usageHead = "## Usage";
+        let readmeContribution;
+        const contributionHead = "## Contribution";
+        let readmeTest;
+        const testingHead = "## Tests";
+        let readmeLicence = input.license;
+        const licenseHead = "## License";
+        let readmeQuestions;
+        const questionsHead = "## Questions";
+        let completeREADME = [];
+        
+        // Adding Title
+        if (input.title == '') {
+            readmeTitle = '# TITLE';
+        } else {
+            readmeTitle = `# ${input.title}`;
+        }
+        completeREADME.push(readmeTitle);
+        
+        
+        //Add in license badge here!!
+        let badge = `![](https://img.shields.io/badge/license-${readmeLicence.replace(/ /g, "%20")}-blue?style=flat-square)`;
+        completeREADME.push(badge);
+        
+        
+        // Adding description
+        if (input.description == '') {
+            readmeDescription = `${descriptionHead}\n Enter project description here.`;
+        } else {
+            readmeDescription = `${descriptionHead}\n${input.description}`;
+        }
+        completeREADME.push(readmeDescription);
+        
+        
+        //Adding Table of Contents
+        tableOfContents = `${tocHead}\n* [Installation](#installation)\n* [Usage](#usage)\n* [Contribution](#contribution)\n* [Tests](#tests)\n* [License](#license)\n* [Questions](#questions)\n`;
+        completeREADME.push(tableOfContents);
+        
+        
+        //Adding installation instructions
+        completeREADME.push(`${installHead}`);
+        
+        installArr = input.install.split(',').map(item => {
+            return `${item.trim()}`;
+        });
+        
+        for (var i = 0; i < installArr.length; i++) {
+            completeREADME.push(`${i + 1}. ${installArr[i]}`);
+        }
