@@ -18,6 +18,8 @@ A command line application that implements the inquirer npm package to prompt qu
 ## Usage
 To begin the series of questions within the prompt located in the directory containing this project. Execute the run node index.js command from the command line. Answer the subsequent questions, once completed a README.md file should be generated in the current directory.
 
+https://github.com/Genius2k21/09-Node.js-Homework-Professional-README-Generator/blob/50ad3046195ff69e7550ac30036e781057d7161a/example/readme-generator-video-jmb.mp4
+
 ## Contribution
  Enter project contriburtion information here.
 
