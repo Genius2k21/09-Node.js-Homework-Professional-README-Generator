@@ -1,9 +1,3 @@
 node_modules/
 .DS_STORE/
 README-test.md
-*.zip
-*.log
-*.logs
-.env
-**error.log*
-*debug.log*
